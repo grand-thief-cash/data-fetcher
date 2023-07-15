@@ -1,0 +1,15 @@
+akshare
+requests
+pandas
+finta
+urllib3==1.25.11
+backtesting
+loguru
+pyyaml
+mysqlclient
+sqlalchemy
+pymarshaler
+Json
+
+-i http://mirrors.aliyun.com/pypi/simple/
+--trusted-host mirrors.aliyun.com
