@@ -1,0 +1,23 @@
+{
+    "task_name": "股票列表-上证",
+    "concrete_task": {
+        "module": "akshare",
+        "method_name": "stock_info_a_code_name",
+        "input_param": [],
+        "resp_fields":["code", "name"],
+        "require_data_procession": false,
+        "storage": {
+            "database_type": "mysql",
+            "database_name": "quant_storage",
+            "table_name": "stock_info_a_code_name",
+            "data_save_mode": "insert",
+            "fields_mapping_mode": "row_to_col",
+            "fields_mapping": {
+
+            },
+            "extra_fields": {
+                "exe_datetime":"string"
+            }
+        }
+    }
+}

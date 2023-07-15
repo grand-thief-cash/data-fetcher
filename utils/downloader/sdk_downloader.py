@@ -1,5 +1,5 @@
 import importlib
-import common.gma_log as log
+import common.gtm_log as log
 
 
 class SDKDownloader:
