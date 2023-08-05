@@ -45,7 +45,7 @@ def get_table_metadata(connection, table_name):
 
 
 def insertDataFrame2Table(connection, table_name, data):
-    df = data  # 根据实际情况获取 DataFrame 对象
+    df = data
     table_meta = get_table_metadata(connection, table_name)
     columns = [col for col in table_meta.columns.keys() if col != 'id']
 
