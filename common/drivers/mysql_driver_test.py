@@ -7,8 +7,7 @@ class TestMysqlDriver(unittest.TestCase):
 
     def test_check_table_exists(self):
         mysql_init.init_connection("../../config/mysql_config.yml")
-        connection = mysql_init.get_connection()
-        isExisted = driver.check_table_exists(connection, "zhangsan")
+        isExisted = driver.check_table_exists("zhangsan")
         self.assertFalse(isExisted)
         print("done")
 

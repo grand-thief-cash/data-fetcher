@@ -2,15 +2,19 @@ from sqlalchemy import inspect, MetaData, Table, Column, Integer, Float, String
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import declarative_base
 
-from common import gtm_log as log
-
-
-def check_table_exists(connection, tablename):
-    inspector = inspect(connection)
-    return tablename in inspector.get_table_names()
+from common import gtm_log as log, mysql_init
 
 
 Base = declarative_base()
+
+
+def check_table_exists(tablename):
+    if mysql_init.mysql_engine is None:
+        raise Exception("MySQL engine is not initialized.")
+
+    inspector = inspect(mysql_init.mysql_engine)
+    return tablename in inspector.get_table_names()
+
 
 
 # deprecated func

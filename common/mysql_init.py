@@ -5,7 +5,9 @@ from sqlalchemy import create_engine
 from common.structs import mysql_config
 
 mysql_conn = None
+mysql_engine = None
 lock = threading.Lock()
+
 
 def read_mysql_config(file_path):
     with open(file_path, 'r') as file:
@@ -24,20 +26,16 @@ def read_mysql_config(file_path):
 
     return mysqlConfig
 
-
-def create_mysql_connection(config):
+def create_mysql_engine(config):
     try:
         # 创建MySQL连接字符串，并指定mysqlclient作为驱动程序
         connection_string = f'mysql+mysqldb://{config.username}:{config.password}@{config.ip}:{config.port}/{config.database}'
 
         # 创建数据库引擎，配置连接池
-        engine = create_engine(connection_string, pool_size=config.pool_size, max_overflow=config.max_overflow)
-
-        # Build connection
-        conn = engine.connect()
+        mysql_engine = create_engine(connection_string, pool_size=config.pool_size, max_overflow=config.max_overflow)
 
         print('MySQL is connected!')
-        return conn
+        return mysql_engine
     except Exception as e:
         print(f'Cannot connect to mysql：{e}')
 
@@ -45,16 +43,13 @@ def create_mysql_connection(config):
 
 
 def init_connection(config_path):
-    global mysql_conn
-    if mysql_conn is None:
+    global mysql_engine
+    if mysql_engine is None:
         with lock:
-            if mysql_conn is None:
+            if mysql_engine is None:
                 config = read_mysql_config(config_path)
-                mysql_conn = create_mysql_connection(config)
+                mysql_engine = create_mysql_engine(config)
 
 
 def get_connection():
-    global mysql_conn
-    return mysql_conn
-
-
+    return mysql_engine.connect()
