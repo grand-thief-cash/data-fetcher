@@ -38,9 +38,6 @@ def run_task_v2(task_config: str = ""):
     # result.to_csv('test_insert_to_database.csv', index=False, encoding='utf8')
     print(result.describe())
 
-    # newResult = pandas.read_csv("test_insert_to_database.csv")
-    # print(newResult.describe())
-
     # data insert
     if result.to_sql("test_table1", mysql_connection, schema=None, if_exists="append"):
         print("Data inserted successfully.")

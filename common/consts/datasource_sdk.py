@@ -1,0 +1,3 @@
+
+BAOSTOCK = "baostock"
+AKSHARE = "akshare"

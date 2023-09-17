@@ -1,10 +1,10 @@
 import unittest
 
-import akshare
 import baostock as bs
 import pandas as pd
 
 import sdk_downloader
+from common.consts.datasource_sdk import BAOSTOCK
 
 
 class TestSDKDownloader(unittest.TestCase):
@@ -137,6 +137,18 @@ class TestSDKDownloader(unittest.TestCase):
 
         #### 登出系统 ####
         bs.logout()
+
+
+    def test_download_pingan8(self):
+        module_name = BAOSTOCK
+        method_name = 'query_history_k_data_plus'
+        downloader = sdk_downloader.SDKDownloader()
+        method = downloader.getMethodObj(module_name, method_name)
+
+        result = downloader.invoke(module_name, method_name, "sz.000001", "date,code,open,high,low,close", start_date='1991-04-03', frequency="d", adjustflag="1")
+        print(result)
+        result.to_csv('test_download_pingan8.csv', index=False, encoding='utf8')
+
 
 
 if __name__ == '__main__':

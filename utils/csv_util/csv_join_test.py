@@ -1,6 +1,6 @@
 import unittest
 
-from utils.analyzer.csv_join import merge_two_csv_by_index, merge_two_csv_by_two_index
+from utils.csv_util.csv_join import merge_two_csv_by_index, merge_two_csv_by_two_index
 
 
 class TestMergeCSV(unittest.TestCase):
