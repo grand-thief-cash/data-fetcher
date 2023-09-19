@@ -17,7 +17,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'stock_zh_a_hist'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, symbol="000001", period="daily", start_date="19910403", adjust="")
         print(result)
@@ -29,7 +29,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'stock_zh_a_hist'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, symbol="000001", period="daily", start_date="19910403", adjust="hfq")
         print(result)
@@ -42,7 +42,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'stock_zh_a_daily'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, symbol="sz000001", start_date="19910403")
         print(result)
@@ -54,7 +54,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'stock_zh_a_daily'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, symbol="sz000001", start_date="19910403", adjust="hfq")
         print(result)
@@ -67,7 +67,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'stock_zh_a_daily'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, symbol="sz000001",  adjust="hfq-factor")
         print(result)
@@ -143,7 +143,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = BAOSTOCK
         method_name = 'query_history_k_data_plus'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, "sz.000001", "date,code,open,high,low,close", start_date='1991-04-03', frequency="d", adjustflag="1")
         print(result)

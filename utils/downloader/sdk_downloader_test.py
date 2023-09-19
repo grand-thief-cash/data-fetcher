@@ -13,7 +13,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'stock_sse_summary'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name)
         # print(result['股票'])
@@ -23,7 +23,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'stock_zh_a_hist'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, symbol="000001", period="daily", start_date="19900301",
                                    end_date='19950325', adjust="")
@@ -34,7 +34,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'stock_fhps_detail_ths'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, symbol="000001")
         print(result)
@@ -44,7 +44,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'news_trade_notify_dividend_baidu'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, date="20150413")
         print(result)
@@ -54,7 +54,7 @@ class TestSDKDownloader(unittest.TestCase):
         module_name = 'akshare'
         method_name = 'stock_zh_a_hist'
         downloader = sdk_downloader.SDKDownloader()
-        method = downloader.getMethodObj(module_name, method_name)
+        method = downloader.get_method_obj(module_name, method_name)
 
         result = downloader.invoke(module_name, method_name, symbol="000001", period="daily", start_date="19900301",
                                    end_date='19950325', adjust="hfq")
