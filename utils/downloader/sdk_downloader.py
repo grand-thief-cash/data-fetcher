@@ -1,7 +1,7 @@
 import importlib
 import common.gtm_log as log
 from common.consts import datasource_sdk
-from utils.reflect_util.wrap import wrap_method_with_hooks
+import common.consts.modules_and_index as module_name
 import pandas as pd
 
 class SDKDownloader:
@@ -16,11 +16,11 @@ class SDKDownloader:
                     return self.wrap_baostock_method_with_hooks(method, self.BaostockLogin, self.BaostockLogout, sdkName)
                 return method
             else:
-                raise AttributeError("Attribute {} in module {} is not callable".format(sdkMethod, sdkName))
+                raise AttributeError("Attribute {} in module {} is not callable".format(sdkMethod, sdkName), module_name.MODULE_UTIL_DOWNLOADER_SDK, "downloader_method_executable_check")
         except ImportError:
-            log.logError("cannot import module: {}".format(sdkName))
+            log.logError("module: {}".format(sdkName), module_name.MODULE_UTIL_DOWNLOADER_SDK, "cannot_import_module_by_name")
         except AttributeError:
-            log.logError("module {} does not exists {}".format(sdkName, sdkMethod))
+            log.logError("module {} does not exists {}".format(sdkName, sdkMethod), module_name.MODULE_UTIL_DOWNLOADER_SDK, "encounter_attribute_err")
 
     def invoke(self, sdkName, sdkMethod, *args, **kwargs):
         method = self.getMethodObj(sdkName, sdkMethod)
@@ -45,12 +45,12 @@ class SDKDownloader:
             loginRes = loginFunc()
             if loginRes.error_msg != "success":
                 log.logError(
-                    "cannot login baostock||err_msg:{}||err_code:{}".format(loginRes.error_msg, loginRes.error_code))
-            log.logInfo("{} login success".format(sdkName))
+                    "cannot login||err_msg:{}||err_code:{}".format(loginRes.error_msg, loginRes.error_code), module_name.MODULE_UTIL_DOWNLOADER_SDK, "baostock_login_failed")
+            log.logInfo("login success", module_name.MODULE_UTIL_DOWNLOADER_SDK, "baostock_login", module_name.MODULE_UTIL_DOWNLOADER_SDK, "baostock_login")
         except ImportError:
-            log.logError("cannot import module: {}".format(sdkName))
+            log.logError("import_err", module_name.MODULE_UTIL_DOWNLOADER_SDK, "baostock_login")
         except AttributeError:
-            log.logError("Attribute 'login' in module {} is missing".format(sdkName))
+            log.logError("attribute_err", module_name.MODULE_UTIL_DOWNLOADER_SDK, "baostock_login")
 
     def BaostockLogout(self, sdkName, result):
         try:
@@ -59,12 +59,12 @@ class SDKDownloader:
             logoutRes = logoutFunc()
             if logoutRes.error_msg != "success":
                 log.logError(
-                    "cannot logout baostock||err_msg:{}||err_code:{}".format(logoutRes.error_msg, logoutRes.error_code))
-            log.logInfo("{} logout success".format(sdkName))
+                    "err_msg:{}||err_code:{}".format(logoutRes.error_msg, logoutRes.error_code), module_name.MODULE_UTIL_DOWNLOADER_SDK, "baostock_logout_failed")
+            log.logInfo("baostock logout success", module_name.MODULE_UTIL_DOWNLOADER_SDK, "baostock_logout")
         except ImportError:
-            log.logError("cannot import module: {}".format(sdkName))
+            log.logError("import_err".format(sdkName), module_name.MODULE_UTIL_DOWNLOADER_SDK, "baostock_logout")
         except AttributeError:
-            log.logError("Attribute 'logout' in module {} is missing".format(sdkName))
+            log.logError("attribute_err".format(sdkName), module_name.MODULE_UTIL_DOWNLOADER_SDK, "baostock_logout")
 
         data_list = []
         while (result.error_code == '0') & result.next():

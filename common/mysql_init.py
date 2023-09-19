@@ -43,6 +43,7 @@ def create_mysql_engine(config):
 
 
 def init_connection(config_path):
+    print("init MySQL")
     global mysql_engine
     if mysql_engine is None:
         with lock:
