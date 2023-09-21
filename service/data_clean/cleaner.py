@@ -38,5 +38,5 @@ class DataCleaner:
             if len(previous_df) > 0 and key not in previous_df:
                 raise Exception(f'key {key} is not in previous_df')
 
-        comp = datacompy.Compare(self.df, previous_df, join_columns=['code', 'date'])
+        comp = datacompy.Compare(self.df, previous_df, join_columns=key_columns)
         return comp.df1_unq_rows, comp.all_mismatch(), comp.df2_unq_rows
