@@ -54,3 +54,7 @@ def init_connection(config_path):
 
 def get_connection():
     return mysql_engine.connect()
+
+
+def get_engine():
+    return mysql_engine
