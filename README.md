@@ -1,13 +1,5 @@
 # data-fetcher
 
-## Knowledge Base
-
-### Stragegies Learn
-- 你见过哪些耳目一新的量化交易策略？ - 量化QuantBoy的回答 - 知乎
-https://www.zhihu.com/question/264155185/answer/3104262214
-- 基于套利定价理论的七因子策略
-https://mp.weixin.qq.com/s/HpRKPW6bGNTXoCXmZdK8ow
-- 
 ## ENV Install
 
 - Install python 11
@@ -24,7 +16,7 @@ pip uninstall -r requirements/remove.txt -y
 ## Development
 ### Data Source
 - akshare: https://akshare.xyz/tutorial.html#id1
-
+- Baostock: http://baostock.com/baostock/index.php/%E9%A6%96%E9%A1%B5
 ## Development Ref
 
 ### LOG
@@ -34,3 +26,9 @@ pip uninstall -r requirements/remove.txt -y
 ### Unit test
 - unittest: https://docs.python.org/zh-cn/3/library/unittest.html
 
+### 文档
+基于套利定价理论的七因子策略: https://mp.weixin.qq.com/s/HpRKPW6bGNTXoCXmZdK8ow
+
+量化小学: https://www.bilibili.com/video/BV1xW411H7kE/?p=2&vd_source=7880edeb390f6ef3f8bdd4ce778050f3
+
+如何搭建自己的股票高频数据库（Python）:https://zhuanlan.zhihu.com/p/488375029
