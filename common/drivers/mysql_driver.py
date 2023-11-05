@@ -1,9 +1,9 @@
+import pandas
 from sqlalchemy import inspect, MetaData, Table, Column, Integer, Float, String
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import declarative_base
 
 from common import gtm_log as log, mysql_init
-
 
 Base = declarative_base()
 
@@ -14,7 +14,6 @@ def check_table_exists(tablename):
 
     inspector = inspect(mysql_init.mysql_engine)
     return tablename in inspector.get_table_names()
-
 
 
 # deprecated func
@@ -48,6 +47,7 @@ def get_table_metadata(connection, table_name):
     return table
 
 
+# deprecated func
 def insertDataFrame2Table(connection, table_name, data):
     df = data
     table_meta = get_table_metadata(connection, table_name)

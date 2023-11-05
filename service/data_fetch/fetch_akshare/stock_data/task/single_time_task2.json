@@ -13,7 +13,9 @@
             "data_save_mode": "insert",
             "fields_mapping_mode": "row_to_col",
             "fields_mapping": {
-
+                "证券代码": "char(8)",
+                "证券简称": "varchar(8)",
+                "上市日期": "datetime"
             },
             "extra_fields": {
                 "exe_datetime":"string"

@@ -13,17 +13,18 @@ logger.add(sink="../log/%s.log" % datestr,
            )
 
 
-def logInfo(msg):
+def logInfo(msg, module: str = "", index: str = ""):
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    logger.info(msg, time=now)
+    logger.info(msg, time=now, module=module, index=index)
 
 
-def logWarning(msg):
+def logWarning(msg, module: str = "", index: str = ""):
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    logger.warning(msg, time=now)
+    logger.warning(msg, time=now, module=module, index=index)
 
 
-def logError(msg):
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+def logError(msg, module: str = "", index: str = ""):
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S", module=module, index=index)
     logger.error(msg, time=now)
+
 

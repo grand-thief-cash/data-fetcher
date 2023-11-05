@@ -14,7 +14,9 @@ mysql_conn = get_connection()
 
 # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_sql.html
 # from DataFrame to mysql table
-pandas_df.to_sql("test_table1", mysql_conn, schema=None, if_exists="append")
+pandas_df.to_sql("test_table1", mysql_conn, schema=None, index=False, if_exists="replace")
 
 res = mysql_conn.exec_driver_sql("SHOW tables;")
+print(res.all())
+res = mysql_conn.exec_driver_sql("SELECT COUNT(*) FROM test_table1;")
 print(res.all())
