@@ -32,3 +32,14 @@ pip uninstall -r requirements/remove.txt -y
 量化小学: https://www.bilibili.com/video/BV1xW411H7kE/?p=2&vd_source=7880edeb390f6ef3f8bdd4ce778050f3
 
 如何搭建自己的股票高频数据库（Python）:https://zhuanlan.zhihu.com/p/488375029
+
+
+### Requirements:
+1. API data trunks
+2. redesign config json details
+3. logging format
+4. data checking akshare/tushare
+5. checking back adjust
+6. table name rules：
+	1. API （join different params）
+	2. step stage

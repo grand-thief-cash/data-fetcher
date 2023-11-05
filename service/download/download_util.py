@@ -8,7 +8,8 @@ class DownloadUtil:
         # 使用下划线拼接排序后的值
         sorted_params = '_'.join(sorted_values)
 
-        # 拼接sdk_name、func_name和处理后的params
+        # 拼接sdk_name、func_name和stage_name
+        # result = f"{sdk_name}_{func_name}_{stage_name}"
         result = f"{sdk_name}_{func_name}_{sorted_params}"
 
         return result
