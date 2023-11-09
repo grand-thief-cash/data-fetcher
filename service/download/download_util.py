@@ -22,7 +22,7 @@ func_name = "stock_szse_sector_summary"
 params = {
     "symbol": "sh000300",
     "adjust": "hfq",
-    "period": "cherry"
+    "period": "cherry",
 }
 
 DownloadUtil = DownloadUtil()

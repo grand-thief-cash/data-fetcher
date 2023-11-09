@@ -36,10 +36,51 @@ pip uninstall -r requirements/remove.txt -y
 
 ### Requirements:
 1. API data trunks
-2. redesign config json details
+- 第一期只做静态数据拉取，不做periodically update
+- 每一个api 参数不同时候，进行拆表，有需要再join
+- table name 手动填写，根据value 排序
+- task_*.json 只是作为task template 模板，具体的执行周期又任务系统来注入运行周期参数
+- run_task 函数内部不关心具体的下载任务
+- table name rules：
+	1. API （join different params）
+	2. step stage
+2. data processing 
+- 第一期，每一个processing 单数实现 不做工具化 
+- table name rules：
+	1. API （join different params）
+	2. step stage
 3. logging format
 4. data checking akshare/tushare
 5. checking back adjust
-6. table name rules：
-	1. API （join different params）
-	2. step stage
+
+
+```json
+
+{
+    "task_name": "任务名称",  
+    "concrete_task": {
+
+		"fetch": {
+			"module": "akshare",
+			"method_name": "stock_info_sh_name_code",
+			"input_param": {},
+		},
+		"clean": {
+			"fields_mapping":{
+				"证券代码": "security_id"
+			},
+			"transform_axis": true, // 是否需要行列转换
+		},
+        "store": {
+            "table_name": "stock_info_a_code_name",
+            "fields_data_type": {
+                "security_id": "char(8)",
+                "security_desc": "varchar(8)",
+                "上市日期": "datetime"
+            },
+			"primary_key": ["security_id", "date"]
+        }
+    }
+}
+
+```
